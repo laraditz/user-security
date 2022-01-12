@@ -13,4 +13,5 @@ All notable changes to Laravel User Security will be documented in this file.
 - Add user_securities migration file.
 - Add UserSecurity model
 - Add UserSecurable trait with security relationship, updateSecurityPin, updateEntropy, updateMultipleAuthenticators methods
+- Add MatchSecurityPin rule.
 - Migrated from [raditzfarhan/laravel-user-security](https://github.com/raditzfarhan/laravel-user-security)

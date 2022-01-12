@@ -76,7 +76,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
 Add a key to your `.env` file for hashing.
 ```
-LUS_KEY=set_your_key_here
+LUS_KEY=set_your_key_here // for one-way encrypt, do not lose or change this key after set.
 ```
 
 Add validation rule message to `resources/lang/{lang_code}/validation.php`.
@@ -135,6 +135,21 @@ $this->validate($request, [
     ...
 ]);
 ```
+
+For security pin, you can use `MatchSecurityPin` rule. You can pass the model in the constructor. Otherwise, the rule will assume you want to use the session user. The model must use `UserSecurable` trait.
+
+```php
+use Laraditz\UserSecurity\Rules\MatchSecurityPin;
+
+
+$this->validate($request, [
+    ...
+    'security_pin' => new MatchSecurityPin,
+    'security_pin2' => new MatchSecurityPin($model),
+    ...
+]);
+```
+
 
 ## Change log
 
